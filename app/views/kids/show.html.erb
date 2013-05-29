@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <h1><%= @kid.name %></h1>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Comment</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @kid.transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.format_date %></td>
+        <td><%= transaction.amount %></td>
+        <td><%= transaction.comment %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <span class="total">Balance: <span><span class="total"><%= @kid.total %></span>
+  <%= button_to 'Add', kids_path, :class => "btn btn-large btn-success add" %>
+</div>

@@ -11,3 +11,13 @@
  *= require_self
  *= require_tree .
  */
+
+
+ .total {
+   font-size: 32px;
+   font-weight: bold;
+ }
+
+ .add {
+   margin-top: 20px;
+ }
