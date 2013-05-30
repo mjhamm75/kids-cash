@@ -13,11 +13,15 @@
  */
 
 
- .total {
-   font-size: 32px;
-   font-weight: bold;
- }
+.total {
+font-size: 32px;
+font-weight: bold;
+}
 
- .add {
-   margin-top: 20px;
- }
+.add {
+margin-top: 20px;
+}
+
+.btn-group form {
+margin-bottom: 0px;
+}

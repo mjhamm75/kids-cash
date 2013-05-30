@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <h1>Kids</h1>
   <table class="table table-striped" id="kids">
     <thead>
@@ -14,13 +14,18 @@
       <tr data-link="<%= kid_path(kid) %>">
         <td><%= kid.name %></td>
         <td><%= kid.balance %></td>
-        <td><%= button_to 'x', kid, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn-mini' %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
 
   <br />
-
-  <%= button_to 'Add Kid', new_kid_path, method: :get, :class => 'btn btn-large btn-success'%>
+  <div class="btn-toolbar">
+    <div class="btn-group clearfix">
+      <%= button_to 'Add Kid', new_kid_path, method: :get, :class => 'btn btn-large btn-success'%>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-large btn-success" id="quick-add-button">Quick Add</button>
+    </div>
+  </div>
 </div>

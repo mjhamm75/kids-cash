@@ -10,5 +10,23 @@
 
 <%= yield %>
 
+<div id="quick-add-modal" class="modal hide fade in">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">x</a>
+    <h3>Quick Add</h3>
+  </div>
+  <div class="modal-body">
+    <div class="field">
+      <label for="transaction_amount">Amount</label
+      <br>
+      <input id="transaction_amount" size="30" type="number"></input>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-success">Quick Add</a>
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+  </div>
+</div>
+
 </body>
 </html>
