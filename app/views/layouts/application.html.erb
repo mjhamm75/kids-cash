@@ -10,5 +10,35 @@
 
 <%= yield %>
 
+<div id="add-modal" class="modal hide fade in">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">x</a>
+    <h3 id="modal-name"></h3>
+  </div>
+  <div class="modal-body">
+    <div id="name-select">
+      <select id="add-name">
+      <% Kid.all.each do |kid| %>
+        <option><%= kid.name %></option>
+      <% end %>
+      </select>
+    </div>
+    <div class="field">
+      <label for="transaction-amount">Amount</label
+      <br>
+      <input id="transaction-amount" size="30" type="number"></input>
+    </div>
+    <div class="field">
+      <label for="add-comment">Comment</label>
+      <br>
+      <textarea id="add-comment"></textarea>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-success" id="add-finish">Quick Add</a>
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+  </div>
+</div>
+
 </body>
 </html>

@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container-fluid">
-  <h1><%= @kid.name %></h1>
+  <h1 id="kid-name"><%= @kid.name %></h1>
 
   <table class="table table-striped">
     <thead>
@@ -23,6 +23,9 @@
     </tbody>
   </table>
 
-  <span class="total">Balance: <span><span class="total"><%= @kid.total %></span>
-  <%= button_to 'Add', kids_path, :class => "btn btn-large btn-success add" %>
+  <div>
+    <span class="total">Balance: <span><span class="total"><%= @kid.total %></span>
+  </div>
+  <br>
+  <button type="button" class="btn btn-large btn-success" id="add-button">Add Transaction</button>
 </div>

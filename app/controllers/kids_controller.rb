@@ -80,4 +80,11 @@ class KidsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def add_transaction
+    kid = Kid.find_by_name(params[:name])
+    kid.transactions.create!(:amount => params[:amount].to_i, :comment => params[:comment])
+
+    redirect_to kids_url
+  end
 end
