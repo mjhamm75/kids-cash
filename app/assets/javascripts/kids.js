@@ -12,7 +12,7 @@ $( document ).ready(function() {
   $('#add-button').click(function() {
     $('#modal-name').val("Add Transaction");
     $('#add-name').hide();
-    $('#add-name').val($('#kid-name'))
+    $('#add-name').val($('#kid-name').text());
     $('#add-modal').modal();
   });
 

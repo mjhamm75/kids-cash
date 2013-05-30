@@ -1,6 +1,7 @@
 class Kid < ActiveRecord::Base
   attr_accessible :balance, :name
   has_many :transactions
+  validates :name, :presence => true
 
   def total
     total = 0

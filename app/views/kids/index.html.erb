@@ -13,7 +13,7 @@
     <% @kids.each do |kid| %>
       <tr data-link="<%= kid_path(kid) %>">
         <td><%= kid.name %></td>
-        <td><%= kid.balance %></td>
+        <td><%= kid.total %></td>
       </tr>
     <% end %>
     </tbody>
