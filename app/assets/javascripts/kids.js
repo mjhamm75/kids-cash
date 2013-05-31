@@ -7,6 +7,7 @@ $( document ).ready(function() {
   });
 
   $('#quick-add-button').click(function() {
+    $('#modal-name').text("Quick Add");
     $('#add-modal').modal();
   });
 
@@ -18,6 +19,7 @@ $( document ).ready(function() {
   });
 
   $('#add-kid').click(function() {
+    $('#modal-name').text("Add Transactions");
     $('#add-kid-modal').modal();
   });
 

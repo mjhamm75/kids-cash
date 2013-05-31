@@ -35,5 +35,8 @@
 }
 
 .money {
-  margin-left: 15px
+  margin-left: 5px;
+  display: inline-block;
+  width: 45px;
+  text-align: right;
 }
