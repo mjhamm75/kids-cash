@@ -35,9 +35,9 @@ $( document ).ready(function() {
       success: function() {
         $('#add-modal').modal('hide');
         var row = $('#kids tr td').filter(function() {
-          return $(this).text() == name;
+          return $(this).text() === name;
         });
-        var current = $(row).siblings().find('.money').text()
+        var current = $(row).siblings().find('.money').text();
         var amount = $('#transaction-amount').val();
         $(row).siblings().find('.money').text(Number(current) + Number(amount));
         $('#add-name option:selected').val("");
