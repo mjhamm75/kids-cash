@@ -7,6 +7,9 @@ class Transaction < ActiveRecord::Base
   end
 
   def total
+    if(amount == 0)
+      return "0.00"
+    end
     cents = amount.to_s[-2, 2]
     dollars = amount.to_s[0..-3]
     return dollars + "." + cents

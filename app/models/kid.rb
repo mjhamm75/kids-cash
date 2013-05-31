@@ -8,6 +8,9 @@ class Kid < ActiveRecord::Base
     self.transactions.each do |transaction|
       total += transaction.amount
     end
+    if(total == 0)
+      return "0.00"
+    end
     cents = total.to_s[-2, 2]
     dollars = total.to_s[0..-3]
     return dollars + "." + cents
