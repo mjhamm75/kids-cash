@@ -93,7 +93,7 @@ class KidsController < ApplicationController
     balance = params[:balance].gsub('.', '').to_i
     name = params[:name].strip
     kid = Kid.create!(:name => name)
-    kid.transactions.create!(:amount => balance, :comment => "Initial Balance")
+    kid.transactions.create!(:amount => balance, :comment => "Initial Balancem")
 
     redirect_to kids_url
   end

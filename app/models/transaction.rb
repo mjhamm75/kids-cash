@@ -7,13 +7,8 @@ class Transaction < ActiveRecord::Base
   end
 
   def total
-    if(amount > 0)
-      puts amount
-      cents = amount.to_s[-2, 2]
-      dollars = amount.to_s[0..-2]
-      return dollars + "." + cents
-    else
-      return 0
-    end
+    cents = amount.to_s[-2, 2]
+    dollars = amount.to_s[0..-3]
+    return dollars + "." + cents
   end
 end
