@@ -1,4 +1,6 @@
 $( document ).ready(function() {
+  "use strict";
+
   $("tr[data-link]").click(function() {
     var that = $(this);
     window.location = that.data("link");
@@ -27,12 +29,21 @@ $( document ).ready(function() {
       url: "http://99.44.242.76:3000/kids/add-transaction",
       data: { name: name, amount: amount, comment: comment },
       type: "POST",
-      dataType: "json"
+      dataType: "json",
+      success: function() {
+        $('#add-modal').modal('hide');
+        var row = $('#kids tr td').filter(function() {
+          return $(this).text() == name;
+        });
+        var current = $(row).siblings().find('.money').text()
+        var amount = $('#transaction-amount').val();
+        $(row).siblings().find('.money').text(Number(current) + Number(amount));
+        $('#add-name option:selected').val("");
+        $('#transaction-amount').val("");
+        $('#add-comment').val("");
+      }
     });
-    var success = function() {
-      $('#add-modal').modal('hide');
-    };
-    req.done(success);
+    req.done();
   });
 
   $('#add-kid-finish').click(function() {
@@ -46,7 +57,10 @@ $( document ).ready(function() {
     });
     var success = function() {
       $('#add-kid-modal').modal('hide');
-    }
+      $('#kid-name').val("");
+      $('#kid-balance').val("");
+      $('#kids tr:last').after("<tr><td>" + name + "</td><td>$ " + balance + "</td></tr>");
+    };
     req.done(success);
   });
 
@@ -56,6 +70,11 @@ $( document ).ready(function() {
   });
 
   $('#kid_balance').priceFormat({
+    prefix: "",
+    allowNegative: true
+  });
+
+  $('#kid-balance').priceFormat({
     prefix: "",
     allowNegative: true
   });

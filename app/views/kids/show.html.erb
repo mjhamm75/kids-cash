@@ -16,7 +16,7 @@
       <% @kid.transactions.each do |transaction| %>
       <tr>
         <td><%= transaction.format_date %></td>
-        <td><%= transaction.amount %></td>
+        <td><span>$</span><span class="money"><%= transaction.total %></span></td>
         <td><%= transaction.comment %></td>
       </tr>
       <% end %>
