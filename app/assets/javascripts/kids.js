@@ -12,14 +12,14 @@ $( document ).ready(function() {
   });
 
   $('#add-button').click(function() {
-    $('#modal-name').val("Add Transaction");
+    $('#modal-name').text("Add Transaction");
     $('#add-name').hide();
     $('#add-name').val($('#kid-name').text());
     $('#add-modal').modal();
   });
 
   $('#add-kid').click(function() {
-    $('#modal-name').text("Add Transactions");
+    $('#modal-name').text("Add Kid");
     $('#add-kid-modal').modal();
   });
 
