@@ -88,4 +88,12 @@ class KidsController < ApplicationController
 
     redirect_to kids_url
   end
+
+  def add_kid
+    balance = params[:balance].gsub('.', '').to_i
+    name = params[:name].strip
+    kid = Kid.create!(:name => name, :balance => balance)
+
+    redirect_to kids_url
+  end
 end

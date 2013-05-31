@@ -35,6 +35,21 @@ $( document ).ready(function() {
     req.done(success);
   });
 
+  $('#add-kid-finish').click(function() {
+    var name = $('#kid-name').val();
+    var balance = $('#kid-balance').val();
+    var req = $.ajax({
+      url: "http://99.44.242.76:3000/kids/add-kid",
+      data: { name: name, balance: balance },
+      type: "POST",
+      dataType: "json"
+    });
+    var success = function() {
+      $('#add-kid-modal').modal('hide');
+    }
+    req.done(success);
+  });
+
   $('#transaction-amount').priceFormat({
     prefix: "",
     allowNegative: true
