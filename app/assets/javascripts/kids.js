@@ -26,7 +26,7 @@ $( document ).ready(function() {
     var amount = $('#transaction-amount').val();
     var comment = $('#add-comment').val();
     var req = $.ajax({
-      url: "http://99.44.242.76:3000/kids/add-transaction",
+      url: "kids/add-transaction",
       data: { name: name, amount: amount, comment: comment },
       type: "POST",
       dataType: "json",
@@ -50,7 +50,7 @@ $( document ).ready(function() {
     var name = $('#kid-name').val();
     var balance = $('#kid-balance').val();
     var req = $.ajax({
-      url: "http://99.44.242.76:3000/kids/add-kid",
+      url: "kids/add-kid",
       data: { name: name, balance: balance },
       type: "POST",
       dataType: "json"
