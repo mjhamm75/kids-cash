@@ -82,8 +82,9 @@ class KidsController < ApplicationController
   end
 
   def add_transaction
+    amount = params[:amount].gsub('.', '')
     kid = Kid.find_by_name(params[:name])
-    kid.transactions.create!(:amount => params[:amount].to_i, :comment => params[:comment])
+    kid.transactions.create!(:amount => amount.to_i, :comment => params[:comment])
 
     redirect_to kids_url
   end

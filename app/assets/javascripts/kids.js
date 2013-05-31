@@ -5,7 +5,6 @@ $( document ).ready(function() {
   });
 
   $('#quick-add-button').click(function() {
-    $('#modal-name').val("Quick Add");
     $('#add-modal').modal();
   });
 
@@ -14,6 +13,10 @@ $( document ).ready(function() {
     $('#add-name').hide();
     $('#add-name').val($('#kid-name').text());
     $('#add-modal').modal();
+  });
+
+  $('#add-kid').click(function() {
+    $('#add-kid-modal').modal();
   });
 
   $('#add-finish').click(function() {
@@ -28,7 +31,17 @@ $( document ).ready(function() {
     });
     var success = function() {
       $('#add-modal').modal('hide');
-    }
+    };
     req.done(success);
+  });
+
+  $('#transaction-amount').priceFormat({
+    prefix: "",
+    allowNegative: true
+  });
+
+  $('#kid_balance').priceFormat({
+    prefix: "",
+    allowNegative: true
   });
 });

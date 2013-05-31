@@ -22,10 +22,63 @@
   <br />
   <div class="btn-toolbar">
     <div class="btn-group clearfix">
-      <%= button_to 'Add Kid', new_kid_path, method: :get, :class => 'btn btn-large btn-success add-kid-button'%>
+      <button type="button" class="btn btn-large btn-success" id="add-kid">Add Kid</button>
     </div>
     <div class="btn-group">
       <button type="button" class="btn btn-large btn-success" id="quick-add-button">Quick Add</button>
     </div>
   </div>
 </div>
+
+<div id="add-modal" class="modal hide fade in">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">x</a>
+    <h3 id="modal-name"></h3>
+  </div>
+  <div class="modal-body">
+    <div id="name-select">
+      <select id="add-name">
+      <% Kid.all.each do |kid| %>
+        <option><%= kid.name %></option>
+      <% end %>
+      </select>
+    </div>
+    <div class="field">
+      <label for="transaction-amount">Amount</label
+      <br>
+      <input id="transaction-amount" size="30"></input>
+    </div>
+    <div class="field">
+      <label for="add-comment">Comment</label>
+      <br>
+      <textarea id="add-comment"></textarea>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-success" id="add-finish">Quick Add</a>
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+  </div>
+</div>
+
+<div id="add-kid-modal" class="modal hide fade in">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">x</a>
+    <h3 id="modal-name">Add Kid</h3>
+  </div>
+  <div class="modal-body">
+    <div class="field">
+      <label for="kid-name">Name</label>
+      <input id="kid-name" size="30"></input>
+    </div>
+    <br>
+    <div class="field">
+      <label for="balance">Balance</label>
+      <input id="balance" size="30"></input>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-success" id="add-finish">Add Kid</a>
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+  </div>
+</div>
+
