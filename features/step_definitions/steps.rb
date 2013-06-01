@@ -2,7 +2,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "pat
 
 Given /^I have kids named (.+)$/ do |kids|
   kids.split(', ').each do |kid|
-    Kid.create!(:name => kid, :balance => 0)
+    Kid.create!(:name => kid)
   end
 end
 
@@ -23,7 +23,7 @@ And /^I give a balance of ([0-9]+)$/ do |balance|
 end
 
 Then /^I should see (.+)$/ do |kid|
-  find('tr', text: kid)
+  find('td', text: kid)
 end
 
 When /^I click the row (.+)$/ do |row|
@@ -31,6 +31,7 @@ When /^I click the row (.+)$/ do |row|
 end
 
 Then /^I will see the detail for (.+)$/ do |name|
+  visit kids_path
   find 'body', text: "Jason"
 end
 
@@ -43,7 +44,7 @@ Then /^her balance should be ([0-9]+)$/ do |balance|
 end
 
 Given /^there is a detail page for (.+)$/ do |kid|
-  Kid.create!(:name => kid, :balance => 0)
+  Kid.create!(:name => kid)
 end
 
 
@@ -78,4 +79,8 @@ end
 
 Given /^I add a debit of \-(\d+)$/ do |amount|
   pending # express the regexp above with the code you wish you had
+end
+
+Then(/^show me the response$/) do
+  puts page.body.inspect
 end

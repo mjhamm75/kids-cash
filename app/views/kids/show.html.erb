@@ -17,7 +17,7 @@
       <tr>
         <td><%= transaction.format_date %></td>
         <td><span>$</span><span class="money"><%= transaction.total %></span></td>
-        <td><%= transaction.comment %></td>
+        <td class="comment"><%= transaction.comment %></td>
       </tr>
       <% end %>
     </tbody>
@@ -26,6 +26,4 @@
   <div>
     <span class="total">Balance: <span><span class="total"><%= @kid.total %></span>
   </div>
-  <br>
-  <button type="button" class="btn btn-large btn-success" id="add-button">Add Transaction</button>
 </div>

@@ -21,21 +21,21 @@ class KidsController < ApplicationController
     end
   end
 
-  # GET /kids/new
-  # GET /kids/new.json
-  def new
-    @kid = Kid.new
+  # # GET /kids/new
+  # # GET /kids/new.json
+  # def new
+  #   @kid = Kid.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @kid }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html # new.html.erb
+  #     format.json { render json: @kid }
+  #   end
+  # end
 
-  # GET /kids/1/edit
-  def edit
-    @kid = Kid.find(params[:id])
-  end
+  # # GET /kids/1/edit
+  # def edit
+  #   @kid = Kid.find(params[:id])
+  # end
 
   # POST /kids
   # POST /kids.json
@@ -53,21 +53,21 @@ class KidsController < ApplicationController
     end
   end
 
-  # PUT /kids/1
-  # PUT /kids/1.json
-  def update
-    @kid = Kid.find(params[:id])
+  # # PUT /kids/1
+  # # PUT /kids/1.json
+  # def update
+  #   @kid = Kid.find(params[:id])
 
-    respond_to do |format|
-      if @kid.update_attributes(params[:kid])
-        format.html { redirect_to @kid, notice: 'Kid was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @kid.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @kid.update_attributes(params[:kid])
+  #       format.html { redirect_to @kid, notice: 'Kid was successfully updated.' }
+  #       format.json { head :no_content }
+  #     else
+  #       format.html { render action: "edit" }
+  #       format.json { render json: @kid.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /kids/1
   # DELETE /kids/1.json
