@@ -11,12 +11,12 @@ Feature: Show a list of kids with available balance
     Then I should see Bryson
     And I should see Austin
 
-  @javascript
+  @culerity
   Scenario: Add children to the list
     When I add a kid
-    Then show me the response
     And I give the name Brooklyn
     And I give a balance of 0
     And I click the button Add Kid
+    Then show me the response
     Then I should see Brooklyn
     And her balance should be 0

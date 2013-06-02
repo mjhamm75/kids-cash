@@ -7,8 +7,8 @@ $( document ).ready(function() {
   });
 
   $('#quick-add-button').click(function() {
-    $('#modal-name').text("Quick Add");
-    $('#add-modal').modal();
+    $('#index').hide();
+    $('#add-modal').show();
   });
 
   $('#add-button').click(function() {
@@ -18,9 +18,24 @@ $( document ).ready(function() {
     $('#add-modal').modal();
   });
 
+  $('#add-close').click(function() {
+    $('#add-modal').hide();
+    $('#add-name option:selected').val("");
+    $('#transaction-amount').val("");
+    $('#add-comment').val("");
+    $('#index').show();
+  });
+
   $('#add-kid').click(function() {
-    $('#modal-name').text("Add Kid");
-    $('#add-kid-modal').modal();
+    $('#index').hide();
+    $('#add-kid-modal').show();
+  });
+
+  $('#add-kid-close').click(function() {
+    $('#add-kid-modal').hide();
+    $('#kid-name').val("");
+    $('#kid-balance').val("");
+    $('#index').show();
   });
 
   $('#add-finish').click(function() {
@@ -33,16 +48,17 @@ $( document ).ready(function() {
       type: "POST",
       dataType: "json",
       success: function() {
-        $('#add-modal').modal('hide');
         var row = $('#kids tr td').filter(function() {
           return $(this).text() === name;
         });
         var current = $(row).siblings().find('.money').text();
         var amount = $('#transaction-amount').val();
         $(row).siblings().find('.money').text(Number(current) + Number(amount));
+        $('#add-modal').hide();
         $('#add-name option:selected').val("");
         $('#transaction-amount').val("");
         $('#add-comment').val("");
+        $('#index').show();
       }
     });
     req.done();
@@ -58,9 +74,10 @@ $( document ).ready(function() {
       dataType: "json"
     });
     var success = function() {
-      $('#add-kid-modal').modal('hide');
+      $('#add-kid-modal').hide();
       $('#kid-name').val("");
       $('#kid-balance').val("");
+      $('#index').show();
       $('#kids tr:last').after("<tr><td>" + name + "</td><td>$ " + balance + "</td></tr>");
     };
     req.done(success);

@@ -41,6 +41,10 @@
   text-align: right;
 }
 
+#add-modal, #add-kid-modal {
+  display: none;
+}
+
 @media only screen and (max-device-width: 480px) {
   h1, h3, label {
     line-height: 75px !important;
@@ -81,7 +85,7 @@
   }
 
   input {
-
+    line-height: 100px !important;
     width: 700px !important;
   }
 
