@@ -29,8 +29,8 @@ $( document ).ready(function() {
   };
 
   var flipModals = function(divHide, divShow) {
-    divHide.hide();
-    divShow.show();
+    $(divHide).hide();
+    $(divShow).show();
   }
 
   $('#add-finish').click(function() {
