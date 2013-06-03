@@ -11,8 +11,8 @@ $( document ).ready(function() {
   });
 
   $('#add-close').click(function() {
-    clearDiv('#add-modal');
     flipModals('#add-modal', '#index');
+    clearDiv('#add-modal');
   });
 
   $('#add-kid').click(function() {
@@ -25,13 +25,13 @@ $( document ).ready(function() {
   });
 
   var clearDiv = function(div) {
-    $(':input:not(:button)', div).val([])
+    $(':input:not(:button)', div).val([]);
   };
 
   var flipModals = function(divHide, divShow) {
     $(divHide).hide();
     $(divShow).show();
-  }
+  };
 
   $('#add-finish').click(function() {
     var name = $('#add-name option:selected').val();
@@ -87,22 +87,4 @@ $( document ).ready(function() {
     prefix: "",
     allowNegative: true
   });
-
-  var metas = document.getElementsByTagName('meta');
-  var i;
-  if (navigator.userAgent.match(/iPhone/i)) {
-    for (i=0; i<metas.length; i++) {
-      if (metas[i].name == "viewport") {
-        metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
-      }
-    }
-    document.addEventListener("gesturestart", gestureStart, false);
-  }
-  function gestureStart() {
-    for (i=0; i<metas.length; i++) {
-      if (metas[i].name == "viewport") {
-        metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
-      }
-    }
-  }
 });
