@@ -7,37 +7,31 @@ $( document ).ready(function() {
   });
 
   $('#quick-add-button').click(function() {
-    $('#index').hide();
-    $('#add-modal').show();
-  });
-
-  $('#add-button').click(function() {
-    $('#modal-name').text("Add Transaction");
-    $('#add-name').hide();
-    $('#add-name').val($('#kid-name').text());
-    $('#add-modal').modal();
+    flipModals('#index', '#add-modal');
   });
 
   $('#add-close').click(function() {
-    $('#add-modal').hide();
     clearDiv('#add-modal');
-    $('#index').show();
+    flipModals('#add-modal', '#index');
   });
 
   $('#add-kid').click(function() {
-    $('#index').hide();
-    $('#add-kid-modal').show();
+    flipModals('#index', '#add-kid-modal');
   });
 
   $('#add-kid-close').click(function() {
-    $('#add-kid-modal').hide();
+    flipModals('#add-kid-modal', '#index');
     clearDiv('#add-kid-modal');
-    $('#index').show();
   });
 
   var clearDiv = function(div) {
     $(':input:not(:button)', div).val([])
   };
+
+  var flipModals = function(divHide, divShow) {
+    divHide.hide();
+    divShow.show();
+  }
 
   $('#add-finish').click(function() {
     var name = $('#add-name option:selected').val();
@@ -55,9 +49,8 @@ $( document ).ready(function() {
         var current = $(row).siblings().find('.money').text();
         var amount = $('#transaction-amount').val();
         $(row).siblings().find('.money').text(Number(current) + Number(amount));
-        $('#add-modal').hide();
+        flipModals('#add-modal', '#index');
         clearDiv('#add-modal');
-        $('#index').show();
       }
     });
     req.done();
@@ -73,9 +66,8 @@ $( document ).ready(function() {
       dataType: "json"
     });
     var success = function() {
-      $('#add-kid-modal').hide();
+      flipModals('#add-kid-modal', '#index');
       clearDiv('#add-kid-modal');
-      $('#index').show();
       $('#kids tr:last').after("<tr><td>" + name + "</td><td>$ " + balance + "</td></tr>");
     };
     req.done(success);
