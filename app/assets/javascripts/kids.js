@@ -20,9 +20,7 @@ $( document ).ready(function() {
 
   $('#add-close').click(function() {
     $('#add-modal').hide();
-    $('#add-name option:selected').val("");
-    $('#transaction-amount').val("");
-    $('#add-comment').val("");
+    clearDiv('#add-modal');
     $('#index').show();
   });
 
@@ -33,10 +31,13 @@ $( document ).ready(function() {
 
   $('#add-kid-close').click(function() {
     $('#add-kid-modal').hide();
-    $('#kid-name').val("");
-    $('#kid-balance').val("");
+    clearDiv('#add-kid-modal');
     $('#index').show();
   });
+
+  var clearDiv = function(div) {
+    $(':input:not(:button)', div).val([])
+  };
 
   $('#add-finish').click(function() {
     var name = $('#add-name option:selected').val();
@@ -55,9 +56,7 @@ $( document ).ready(function() {
         var amount = $('#transaction-amount').val();
         $(row).siblings().find('.money').text(Number(current) + Number(amount));
         $('#add-modal').hide();
-        $('#add-name option:selected').val("");
-        $('#transaction-amount').val("");
-        $('#add-comment').val("");
+        clearDiv('#add-modal');
         $('#index').show();
       }
     });
@@ -75,8 +74,7 @@ $( document ).ready(function() {
     });
     var success = function() {
       $('#add-kid-modal').hide();
-      $('#kid-name').val("");
-      $('#kid-balance').val("");
+      clearDiv('#add-kid-modal');
       $('#index').show();
       $('#kids tr:last').after("<tr><td>" + name + "</td><td>$ " + balance + "</td></tr>");
     };
