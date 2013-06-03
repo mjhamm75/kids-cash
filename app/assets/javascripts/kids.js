@@ -72,19 +72,4 @@ $( document ).ready(function() {
     };
     req.done(success);
   });
-
-  $('#transaction-amount').priceFormat({
-    prefix: "",
-    allowNegative: true
-  });
-
-  $('#kid_balance').priceFormat({
-    prefix: "",
-    allowNegative: true
-  });
-
-  $('#kid-balance').priceFormat({
-    prefix: "",
-    allowNegative: true
-  });
 });
