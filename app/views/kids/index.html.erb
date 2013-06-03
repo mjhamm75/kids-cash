@@ -10,12 +10,7 @@
     </thead>
 
     <tbody>
-    <% @kids.each do |kid| %>
-      <tr data-link="<%= kid_path(kid) %>">
-        <td><%= kid.name %></td>
-        <td><span>$</span><span class="money"><%= kid.total %></span></td>
-      </tr>
-    <% end %>
+      <%= render 'kids' %>
     </tbody>
   </table>
 
