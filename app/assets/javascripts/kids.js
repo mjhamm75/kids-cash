@@ -65,9 +65,10 @@ $( document ).ready(function() {
       type: "POST",
       dataType: "json",
       success: function(data) {
-        flipModals('#add-modal', '#index');
-        clearDiv('#add-modal');
+        flipModals('#add-kid-modal', '#index');
+        clearDiv('#add-kid-modal');
         $('#index table tr:last').after('<tr data-link="kids/"' + data.id + '><td>' + data.name + '</td><td><span>$</span><span class="money">' + data.total + '</span></td></tr>');
+        $('select option:last').after('<option>' + data.name + '</option>');
       }
     });
     req.done();
