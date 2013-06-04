@@ -63,13 +63,13 @@ $( document ).ready(function() {
       url: "kids/add-kid",
       data: { name: name, balance: balance },
       type: "POST",
-      dataType: "json"
+      dataType: "json",
+      success: function(data) {
+        flipModals('#add-modal', '#index');
+        clearDiv('#add-modal');
+        $('#index table tr:last').after('<tr data-link="kids/"' + data.id + '><td>' + data.name + '</td><td><span>$</span><span class="money">' + data.total + '</span></td></tr>');
+      }
     });
-    var success = function() {
-      flipModals('#add-kid-modal', '#index');
-      clearDiv('#add-kid-modal');
-      $('#kids tr:last').after("<tr><td>" + name + "</td><td>$ " + balance + "</td></tr>");
-    };
-    req.done(success);
+    req.done();
   });
 });

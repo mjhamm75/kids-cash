@@ -82,18 +82,27 @@ class KidsController < ApplicationController
   end
 
   def add_transaction
-    amount = params[:amount].gsub('.', '')
-    kid = Kid.find_by_name(params[:name])
-    kid.transactions.create!(:amount => amount.to_i, :comment => params[:comment])
+    # amount = params[:amount].gsub('.', '')
+    # kid = Kid.find_by_name(params[:name])
+    # kid.transactions.create!(:amount => amount.to_i, :comment => params[:comment])
 
-    redirect_to kids_url
+    # redirect_to kids_url
+    @kid = Kid.first
+    @kid[:total] = @kid.total
+
+    respond_to do |format|
+      format.json { render json: @kid}
+    end
   end
 
   def add_kid
     balance = params[:balance].gsub('.', '').to_i
     name = params[:name].strip
-    kid = Kid.create!(:name => name)
-    kid.transactions.create!(:amount => balance, :comment => "Initial Balance")
-    redirect_to kids_url
+    @kid = Kid.create!(:name => name)
+    @kid.transactions.create!(:amount => balance, :comment => "Initial Balance")
+    @kid[:total] = balance
+    respond_to do |format|
+      format.json { render json: @kid }
+    end
   end
 end
