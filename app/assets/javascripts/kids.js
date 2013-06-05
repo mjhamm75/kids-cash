@@ -48,7 +48,8 @@ $( document ).ready(function() {
         });
         var current = $(row).siblings().find('.money').text();
         var amount = $('#add-transaction-amount').val();
-        $(row).siblings().find('.money').text(Number(current) + Number(amount));
+        var total = (Number(current) + Number(amount)).toFixed(2);
+        $(row).siblings().find('.money').text(total);
         flipModals('#add-transaction-modal', '#index');
         clearDiv('#add-transaction-modal');
       }
