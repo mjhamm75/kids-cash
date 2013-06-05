@@ -33,9 +33,17 @@ $( document ).ready(function() {
     $(divShow).show();
   };
 
+  var formatAmount = function(amount) {
+    while(amount.length < 3) {
+      amount = amount + "0";
+    }
+    return amount;
+  }
+
   $('#add-transaction-finish').click(function(data) {
     var name = $('#add-transaction-name option:selected').val();
     var amount = $('#add-transaction-amount').val();
+    amount = formatAmount(amount);
     var comment = $('#add-transaction-comment').val();
     var req = $.ajax({
       url: "kids/add-transaction",

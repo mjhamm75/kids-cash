@@ -14,7 +14,6 @@ class KidsController < ApplicationController
   # GET /kids/1.json
   def show
     @kid = Kid.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @kid }
@@ -82,12 +81,11 @@ class KidsController < ApplicationController
   end
 
   def add_transaction
-    # amount = params[:amount].gsub('.', '')
-    # kid = Kid.find_by_name(params[:name])
-    # kid.transactions.create!(:amount => amount.to_i, :comment => params[:comment])
+    amount = params[:amount].gsub('.', '')
+    @kid = Kid.find_by_name(params[:name])
+    @kid.transactions.create!(:amount => amount.to_i, :comment => params[:comment])
 
     # redirect_to kids_url
-    @kid = Kid.first
     @kid[:total] = @kid.total
 
     respond_to do |format|
