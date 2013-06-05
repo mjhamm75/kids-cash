@@ -6,16 +6,16 @@ $( document ).ready(function() {
     window.location = that.data("link");
   });
 
-  $('#quick-add-button').click(function() {
-    flipModals('#index', '#add-modal');
+  $('#add-transaction-button').click(function() {
+    flipModals('#index', '#add-transaction-modal');
   });
 
-  $('#add-close').click(function() {
-    flipModals('#add-modal', '#index');
-    clearDiv('#add-modal');
+  $('#add-transction-close').click(function() {
+    flipModals('#add-transaction-modal', '#index');
+    clearDiv('#add-transaction-modal');
   });
 
-  $('#add-kid').click(function() {
+  $('#add-kid-button').click(function() {
     flipModals('#index', '#add-kid-modal');
   });
 
@@ -33,10 +33,10 @@ $( document ).ready(function() {
     $(divShow).show();
   };
 
-  $('#add-finish').click(function() {
-    var name = $('#add-name option:selected').val();
-    var amount = $('#transaction-amount').val();
-    var comment = $('#add-comment').val();
+  $('#add-finish').click(function(data) {
+    var name = $('#add-transaction-name option:selected').val();
+    var amount = $('#add-transaction-amount').val();
+    var comment = $('#add-transaction-comment').val();
     var req = $.ajax({
       url: "kids/add-transaction",
       data: { name: name, amount: amount, comment: comment },
@@ -47,18 +47,18 @@ $( document ).ready(function() {
           return $(this).text() === name;
         });
         var current = $(row).siblings().find('.money').text();
-        var amount = $('#transaction-amount').val();
+        var amount = $('#add-transaction-amount').val();
         $(row).siblings().find('.money').text(Number(current) + Number(amount));
-        flipModals('#add-modal', '#index');
-        clearDiv('#add-modal');
+        flipModals('#add-transaction-modal', '#index');
+        clearDiv('#add-transaction-modal');
       }
     });
     req.done();
   });
 
   $('#add-kid-finish').click(function() {
-    var name = $('#kid-name').val();
-    var balance = $('#kid-balance').val();
+    var name = $('#add-kid-name').val();
+    var balance = $('#add-kid-balance').val();
     var req = $.ajax({
       url: "kids/add-kid",
       data: { name: name, balance: balance },

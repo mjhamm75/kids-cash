@@ -11,42 +11,42 @@
 
   <%= yield %>
 
-  <div id="add-modal" class="span4">
+  <div id="add-transaction-modal" class="span4">
     <div class="modal-body">
-      <div id="name-select">
-        <select id="add-name">
+      <div id="add-transaction-name-select">
+        <select id="add-transaction-name">
         <% Kid.all.each do |kid| %>
           <option><%= kid.name %></option>
         <% end %>
         </select>
       </div>
       <div class="field">
-        <label for="transaction-amount">Amount</label
+        <label for="add-transaction-amount">Amount</label
         <br>
-        <input id="transaction-amount" size="30" type="number"></input>
+        <input id="add-transaction-amount" size="30" type="number"></input>
       </div>
       <div class="field">
-        <label for="add-comment">Comment</label>
+        <label for="add-transaction-comment">Comment</label>
         <br>
-        <textarea id="add-comment"></textarea>
+        <textarea id="add-transaction-comment"></textarea>
       </div>
     </div>
     <div class="modal-footer">
-      <a href="#" class="btn btn-success" id="add-finish">Quick Add</a>
-      <a href="#" id="add-close" class="btn" data-dismiss="modal">Close</a>
+      <a href="#" class="btn btn-success" id="add-transaction-finish">Quick Add</a>
+      <a href="#" class="btn" id="add-transction-close" data-dismiss="modal">Close</a>
     </div>
   </div>
 
   <div id="add-kid-modal" class="span4">
     <div class="modal-body">
       <div class="field">
-        <label for="kid-name">Name</label>
-        <input id="kid-name" size="30"></input>
+        <label for="add-kid-name">Name</label>
+        <input id="add-kid-name" size="30"></input>
       </div>
       <br>
       <div class="field">
-        <label for="kid-balance">Balance</label>
-        <input id="kid-balance" size="30" type="number"></input>
+        <label for="add-kid-balance">Balance</label>
+        <input id="add-kid-balance" size="30" type="number"></input>
       </div>
     </div>
     <div class="modal-footer">

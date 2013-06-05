@@ -41,6 +41,6 @@
   text-align: right;
 }
 
-#add-modal, #add-kid-modal {
+#add-transaction-modal, #add-kid-modal {
   display: none;
 }
