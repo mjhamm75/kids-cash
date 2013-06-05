@@ -33,7 +33,7 @@ $( document ).ready(function() {
     $(divShow).show();
   };
 
-  $('#add-finish').click(function(data) {
+  $('#add-transaction-finish').click(function(data) {
     var name = $('#add-transaction-name option:selected').val();
     var amount = $('#add-transaction-amount').val();
     var comment = $('#add-transaction-comment').val();
