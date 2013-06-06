@@ -16,7 +16,13 @@
       <% @kid.transactions.each do |transaction| %>
       <tr>
         <td><%= transaction.format_date %></td>
-        <td><span>$</span><span class="money"><%= transaction.total %></span></td>
+        <td><span>$</span>
+          <% if (transaction.total.to_f > 0) %>
+            <span class="money"><%= transaction.total %></span>
+          <% else %>
+            <span class="money negative"><%= transaction.total %></span>
+          <% end %>
+        </td>
         <td class="comment"><%= transaction.comment %></td>
       </tr>
       <% end %>

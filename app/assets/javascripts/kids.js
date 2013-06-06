@@ -33,17 +33,20 @@ $( document ).ready(function() {
     $(divShow).show();
   };
 
-  var formatAmount = function(amount) {
-    while(amount.length < 3) {
-      amount = amount + "0";
+  var changeColorForNegative = function() {
+    var moneys = $('.money');
+    for(var i = 0; i < moneys.length; i++) {
+      if(Number($(moneys[i]).text()) < 0) {
+        $(moneys[i]).addClass('negative');
+      } else {
+        $(moneys[i]).removeClass('negative');
+      }
     }
-    return amount;
-  }
+  };
 
   $('#add-transaction-finish').click(function(data) {
     var name = $('#add-transaction-name option:selected').val();
     var amount = $('#add-transaction-amount').val();
-    amount = formatAmount(amount);
     var comment = $('#add-transaction-comment').val();
     var req = $.ajax({
       url: "kids/add-transaction",
@@ -58,6 +61,7 @@ $( document ).ready(function() {
         var amount = $('#add-transaction-amount').val();
         var total = (Number(current) + Number(amount)).toFixed(2);
         $(row).siblings().find('.money').text(total);
+        changeColorForNegative();
         flipModals('#add-transaction-modal', '#index');
         clearDiv('#add-transaction-modal');
       }
@@ -74,6 +78,7 @@ $( document ).ready(function() {
       type: "POST",
       dataType: "json",
       success: function(data) {
+        changeColorForNegative();
         flipModals('#add-kid-modal', '#index');
         clearDiv('#add-kid-modal');
         $('#index table tr:last').after('<tr data-link="kids/"' + data.id + '><td>' + data.name + '</td><td><span>$</span><span class="money">' + data.balance + '</span></td></tr>');

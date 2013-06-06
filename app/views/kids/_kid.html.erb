@@ -1,4 +1,10 @@
 <tr data-link="<%= kid_path(kid) %>">
   <td><%= kid.name %></td>
-  <td><span>$</span><span class="money"><%= kid.total %></span></td>
+  <td><span>$</span>
+    <% if (kid.total.to_f > 0) %>
+      <span class="money" ><%= kid.total %></span>
+    <% else %>
+      <span class="money negative" ><%= kid.total %></span>
+    <% end %>
+  </td>
 </tr>

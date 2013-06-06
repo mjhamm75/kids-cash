@@ -44,3 +44,7 @@
 #add-transaction-modal, #add-kid-modal {
   display: none;
 }
+
+.negative {
+  color: red;
+}

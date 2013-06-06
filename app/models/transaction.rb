@@ -1,4 +1,5 @@
 class Transaction < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
   attr_accessible :amount, :comment, :kid_id
   belongs_to :kid
 
@@ -7,7 +8,7 @@ class Transaction < ActiveRecord::Base
   end
 
   def total
-    return amount
+    return number_with_precision(amount, :precision => 2)
   end
 
 end
