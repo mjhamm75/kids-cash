@@ -11,7 +11,7 @@ Feature: Show a list of kids with available balance
     Then I should see Bryson
     And I should see Austin
 
-  @culerity
+  @javascript
   Scenario: Add children to the list
     When I add a kid
     And I give the name Brooklyn
