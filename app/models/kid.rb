@@ -1,4 +1,5 @@
 class Kid < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
   attr_accessible :balance, :name
   has_many :transactions
   validates :name, :presence => true
@@ -11,8 +12,7 @@ class Kid < ActiveRecord::Base
     if(total == 0)
       return "0.00"
     end
-    cents = total.to_s[-2, 2]
-    dollars = total.to_s[0..-3]
-    return dollars + "." + cents
+
+    return number_with_precision(total, :precision => 2)
   end
 end

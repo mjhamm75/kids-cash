@@ -1,4 +1,5 @@
 class KidsController < ApplicationController
+  include ActionView::Helpers::NumberHelper
   # GET /kids
   # GET /kids.json
   def index
@@ -94,11 +95,12 @@ class KidsController < ApplicationController
   end
 
   def add_kid
-    balance = params[:balance].gsub('.', '').to_i
+    balance = params[:balance].to_f
+    balance = number_with_precision(balance, :precision => 2)
     name = params[:name].strip
     @kid = Kid.create!(:name => name)
     @kid.transactions.create!(:amount => balance, :comment => "Initial Balance")
-    @kid[:total] = balance
+    @kid[:balance] = balance
     respond_to do |format|
       format.json { render json: @kid }
     end

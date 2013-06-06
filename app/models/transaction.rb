@@ -7,19 +7,7 @@ class Transaction < ActiveRecord::Base
   end
 
   def total
-    if(self.amount == 0)
-      return "0.00"
-    end
-    self.amount = formatAmount(amount)
-    cents = self.amount.to_s[-2, 2]
-    dollars = self.amount.to_s[0..-3]
-    return dollars + "." + cents
-  end
-
-  def formatAmount(amount)
-    while(amount / 100 < 1)
-      amount -= amount * 10
-    end
     return amount
   end
+
 end

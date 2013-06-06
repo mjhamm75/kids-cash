@@ -76,7 +76,7 @@ $( document ).ready(function() {
       success: function(data) {
         flipModals('#add-kid-modal', '#index');
         clearDiv('#add-kid-modal');
-        $('#index table tr:last').after('<tr data-link="kids/"' + data.id + '><td>' + data.name + '</td><td><span>$</span><span class="money">' + data.total + '</span></td></tr>');
+        $('#index table tr:last').after('<tr data-link="kids/"' + data.id + '><td>' + data.name + '</td><td><span>$</span><span class="money">' + data.balance + '</span></td></tr>');
         $('select option:last').after('<option>' + data.name + '</option>');
       }
     });
