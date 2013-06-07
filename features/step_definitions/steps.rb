@@ -43,44 +43,22 @@ Then /^I am taken to the detail page for (.+)$/ do |kid|
   find('h1', text: kid)
 end
 
-When /^I add a credit to Bryson for (\d+)$/ do |amount|
-  tr = find('tr', text: 'Bryson', exact: false)
+When /^I add a (?:credit|debit) to (.*) for (.*)$/ do |kid, amount|
+  tr = find('tr', text: kid, exact: false)
   @balance = tr.find('.money').text
   click_button('Add Amount')
-  select "Bryson", :from => 'add-transaction-name'
+  select kid, :from => 'add-transaction-name'
   fill_in('add-transaction-amount', :with => amount)
   click_link('add-transaction-finish')
 end
 
-Then /^his balance is increased by (\d+)$/ do |amount|
-  tr = find('tr', text: 'Bryson', exact: false)
-  new_balance = tr.find('.money').text
-  x = number_with_precision(@balance.to_f, :precision => 2)
-  xx = number_with_precision(amount.to_f, :precision => 2)
-  y = number_with_precision(new_balance.to_f, :precision => 2)
-  z = number_with_precision(x.to_f + xx.to_f, :precision => 2)
-  assert_equal(y, z)
+Then /^the balance for (.*) is (?:increased|decreased) by (.*)$/ do |kid, amount|
+  tr = find('tr', text: kid, exact: false)
+  updated_balance = tr.find('.money').text
+  total = addStrings(@balance, amount)
+  totalFloat = stringToFloat(updated_balance)
+  assert_equal(total, totalFloat)
 end
-
-When /^I add a debit to Bryson for \-(\d+)$/ do |amount|
-  tr = find('tr', text: 'Bryson', exact: false)
-  @balance = tr.find('.money').text
-  click_button('Add Amount')
-  select "Bryson", :from => 'add-transaction-name'
-  fill_in('add-transaction-amount', :with => amount)
-  click_link('add-transaction-finish')
-end
-
-Then /^his balance is decreased by \-(\d+)$/ do |amount|
-  tr = find('tr', text: 'Bryson', exact: false)
-    new_balance = tr.find('.money').text
-    x = number_with_precision(@balance.to_f, :precision => 2)
-    xx = number_with_precision(amount.to_f, :precision => 2)
-    y = number_with_precision(new_balance.to_f, :precision => 2)
-    z = number_with_precision(x.to_f + xx.to_f, :precision => 2)
-    assert_equal(y, z)
-end
-
 
 Given /^there is a detail page for (.+)$/ do |kid|
   @kid = Kid.create!(:name => kid)

@@ -28,9 +28,9 @@ Feature: Show a list of kids with available balance
   @javascript
   Scenario: Add credit to kid
     When I add a credit to Bryson for 10
-    Then his balance is increased by 10
+    Then the balance for Bryson is increased by 10
 
   @javascript
   Scenario: Add debit to kid
     When I add a debit to Bryson for -6
-    Then his balance is decreased by -6
+    Then the balance for Bryson is decreased by -6
