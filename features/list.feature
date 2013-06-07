@@ -32,5 +32,5 @@ Feature: Show a list of kids with available balance
 
   @javascript
   Scenario: Add debit to kid
-    When I add a debit to Bryson for 6
-    Then his balance is decreased by 6
+    When I add a debit to Bryson for -6
+    Then his balance is decreased by -6
